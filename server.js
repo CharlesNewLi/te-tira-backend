@@ -1,10 +1,18 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+
+//Cors
+app.use(cors({
+  origin: 'http://localhost:3001',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 // Swagger setup
 const swaggerSetup = require('./swagger');
